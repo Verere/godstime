@@ -24,7 +24,7 @@ export default function About() {
           />
           <div className="absolute -right-3 -top-3 rounded-2xl bg-white p-4 shadow-lg sm:-right-6 sm:top-6">
             <p className="text-xs uppercase tracking-wide text-[#16A34A]">Impact</p>
-            <p className="text-xl font-bold text-[#166534]">8+ years</p>
+            <p className="text-xl font-bold text-[#166534]">3+ years</p>
             <p className="text-sm text-[#2f3d34]">of consistent child support</p>
           </div>
         </div>
@@ -32,8 +32,9 @@ export default function About() {
         <div>
           <h2 className="text-3xl font-bold text-[#17201A] sm:text-4xl">Creating a Place to Call Home</h2>
           <p className="mt-4 text-[#2f3d34]">
-            We are committed to nurturing vulnerable children with dignity, safety and opportunity. Every program is designed
-            to support whole-child development and a future of independence.
+           Godstime Orphanage Home is committed to providing a safe, loving, and nurturing home for children who have lost parental care or are in vulnerable circumstances.
+We believe that every child deserves to feel loved, valued, protected, and given an opportunity to build a brighter future.
+Through the support of compassionate individuals, families, churches, organisations, and partners, we provide essential care while helping the children develop academically, emotionally, spiritually, and socially.
           </p>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {highlights.map(({ label, icon: Icon }) => (
@@ -43,9 +44,7 @@ export default function About() {
               </div>
             ))}
           </div>
-          <a href="#contact" className="mt-6 inline-block rounded-full bg-[#166534] px-5 py-3 text-sm font-semibold text-white hover:bg-[#15803d]">
-            Learn More About Us
-          </a>
+         
         </div>
       </div>
     </section>

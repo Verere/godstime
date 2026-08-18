@@ -9,8 +9,8 @@ export default function Programs({ programs }: ProgramsProps) {
   return (
     <section id="programs" className="bg-[#F0FDF4] px-4 py-16 sm:px-6">
       <div className="mx-auto max-w-7xl">
-        <h2 className="text-3xl font-bold text-[#17201A] sm:text-4xl">Programs</h2>
-        <p className="mt-2 max-w-2xl text-[#2f3d34]">Holistic initiatives that support children from daily care to lifelong opportunity.</p>
+        <h2 className="text-3xl font-bold text-[#17201A] sm:text-4xl">What We Do</h2>
+        <p className="mt-2 max-w-2xl text-[#2f3d34]">Helping Children Today. Building Futures Tomorrow.</p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {programs.filter((program) => program.isPublished).map((program) => (
