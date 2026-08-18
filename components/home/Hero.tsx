@@ -6,15 +6,12 @@ type HeroProps = {
   subtitle: string;
 };
 
-export default function Hero({ badge, title, subtitle }: HeroProps) {
+export default function Hero({  title, subtitle }: HeroProps) {
   return (
     <section id="home" className="relative overflow-hidden px-4 pb-16 pt-12 sm:px-6 sm:pt-16">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_#dcfce7_0%,_transparent_48%),radial-gradient(circle_at_bottom_left,_#fde68a_0%,_transparent_42%)]" />
       <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-2">
-        <div className="space-y-6">
-          <span className="inline-flex rounded-full border border-[#bbf7d0] bg-[#f0fdf4] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#166534]">
-            {badge}
-          </span>
+        <div className="space-y-6 order-2 lg:order-1">
           <h1 className="text-3xl font-bold leading-tight text-[#17201A] sm:text-5xl">{title}</h1>
           <p className="max-w-xl text-base text-[#2f3d34] sm:text-lg">{subtitle}</p>
           <div className="flex flex-wrap gap-3">
@@ -27,7 +24,7 @@ export default function Hero({ badge, title, subtitle }: HeroProps) {
           </div>
         </div>
 
-        <div className="relative">
+        <div className="relative order-1 lg:order-2">
           <Image
             src="/image1.png"
             alt="Children learning together"
