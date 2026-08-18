@@ -48,9 +48,8 @@ export default function Navbar({ donationUrl }: { donationUrl: string }) {
             </a>
           ))}
           <a
-            href={donationUrl}
-            target="_blank"
-            rel="noreferrer"
+            href="#donate"
+          
             className="rounded-full bg-[#166534] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#15803d]"
           >
             Donate
@@ -84,14 +83,7 @@ export default function Navbar({ donationUrl }: { donationUrl: string }) {
               {link.label}
             </a>
           ))}
-          <a
-            href={donationUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-1 rounded-full bg-[#166534] px-4 py-2 text-center text-sm font-semibold text-white"
-          >
-            Donate
-          </a>
+        
         </div>
       </div>
     </header>

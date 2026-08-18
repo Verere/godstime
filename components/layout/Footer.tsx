@@ -42,10 +42,8 @@ export default function Footer({ year, donationUrl }: FooterProps) {
         <div>
           <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-emerald-200">Support</h3>
           <a
-            href={donationUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-block rounded-full bg-[#F59E0B] px-4 py-2 text-sm font-semibold text-[#17201A] transition hover:bg-[#fbbf24]"
+            href="#donate"
+                       className="inline-block rounded-full bg-[#F59E0B] px-4 py-2 text-sm font-semibold text-[#17201A] transition hover:bg-[#fbbf24]"
           >
             Donate Now
           </a>

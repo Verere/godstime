@@ -69,7 +69,7 @@ export default function DonationCTA({ donationUrl }: DonationCTAProps) {
       )}
 
       {/* ── Section ── */}
-      <section className="relative overflow-hidden px-4 py-20 sm:px-6">
+      <section id="donate" className="relative overflow-hidden px-4 py-20 sm:px-6">
         {/* Background layers */}
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(135deg,#14532d,#166534,#15803d)]" />
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,rgba(245,158,11,0.35),transparent_50%)]" />
