@@ -1,4 +1,7 @@
+import Link from "next/link";
 import { HeartHandshake } from "lucide-react";
+import { publicContent } from "@/lib/public-content";
+import Image from "next/image";
 
 type FooterProps = {
   year: number;
@@ -6,66 +9,60 @@ type FooterProps = {
 };
 
 export default function Footer({ year, donationUrl }: FooterProps) {
+  const donateHref = donationUrl && donationUrl !== "https://example.org/donate" ? donationUrl : "/donate";
+
   return (
-    <footer className="bg-[#0f2316] text-white">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-4">
+    <footer className="bg-[#10281a] text-white">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-4">
         <div>
           <div className="mb-3 flex items-center gap-2">
-            <HeartHandshake className="h-5 w-5 text-[#F59E0B]" />
-            <span className="font-semibold">God&apos;stime Orphanage</span>
+            <Image src="/logo.jpeg" alt="God'stime Orphanage Home Logo" width={32} height={32} className="h-12 w-12" />
+                      
+            <span className="font-semibold">God&apos;stime Orphanage Home</span>
           </div>
-          <p className="text-sm text-emerald-100/90">
-            A safe and nurturing home where children can learn, heal and grow.
+          <p className="max-w-xs font-serif text-xl leading-relaxed text-[#f3f0e5]">
+            Creating brighter futures, one child at a time.
           </p>
         </div>
 
         <div>
-          <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-emerald-200">Navigate</h3>
-          <ul className="space-y-2 text-sm text-emerald-100">
-            <li><a href="#about" className="hover:text-white">About</a></li>
-            <li><a href="#programs" className="hover:text-white">Programs</a></li>
-            <li><a href="#events" className="hover:text-white">Events</a></li>
-            <li><a href="#contact" className="hover:text-white">Contact</a></li>
+          <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-200">Navigate</h3>
+          <ul className="space-y-2 text-sm text-emerald-100/95">
+            <li><Link href="/about" className="transition hover:translate-x-0.5 hover:text-white">About</Link></li>
+            <li><Link href="/gallery" className="transition hover:translate-x-0.5 hover:text-white">Gallery</Link></li>
+            <li><Link href="/get-involved" className="transition hover:translate-x-0.5 hover:text-white">Get Involved</Link></li>
+            <li><Link href="/contact" className="transition hover:translate-x-0.5 hover:text-white">Contact</Link></li>
           </ul>
         </div>
 
         <div>
-          <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-emerald-200">Programs</h3>
-          <ul className="space-y-2 text-sm text-emerald-100">
-            <li>Education</li>
-            <li>Healthcare</li>
-            <li>Nutrition</li>
-            <li>Skills Development</li>
+          <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-200">Contact</h3>
+          <ul className="space-y-2 text-sm text-emerald-100/95">
+            <li>{publicContent.contact.phone}</li>
+            <li>{publicContent.contact.email}</li>
+            <li>{publicContent.contact.address}</li>
           </ul>
         </div>
 
         <div>
-          <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-emerald-200">Support</h3>
-          <a
-            href="#donate"
-                       className="inline-block rounded-full bg-[#F59E0B] px-4 py-2 text-sm font-semibold text-[#17201A] transition hover:bg-[#fbbf24]"
+          <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-200">Support</h3>
+          <Link
+            href={donateHref}
+            className="btn-base btn-donate"
           >
             Donate Now
-          </a>
+          </Link>
 
-          <h3 className="mb-3 mt-6 text-sm font-semibold uppercase tracking-wider text-emerald-200">Follow Us</h3>
+          <div className="mt-5 space-y-2 text-sm text-emerald-100/95">
+            <p><Link href="/transparency" className="transition hover:translate-x-0.5 hover:text-white">Trust & Transparency</Link></p>
+            <p><Link href="/privacy" className="transition hover:translate-x-0.5 hover:text-white">Privacy Policy</Link></p>
+            <p><Link href="/terms" className="transition hover:translate-x-0.5 hover:text-white">Terms</Link></p>
+          </div>
+
+          <h3 className="mb-3 mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-200">Follow Us</h3>
           <div className="flex gap-3">
-            {/* Facebook */}
             <a
-              href="https://facebook.com/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Facebook"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-[#1877F2] text-white transition hover:opacity-80"
-            >
-              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M22 12a10 10 0 1 0-11.563 9.876v-6.988H7.898V12h2.539V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.888h-2.33v6.988A10.002 10.002 0 0 0 22 12Z" />
-              </svg>
-            </a>
-
-            {/* WhatsApp */}
-            <a
-              href="https://wa.me/2348154255357"
+              href={`https://wa.me/${publicContent.contact.phoneRaw.replace(/\D/g, "")}`}
               target="_blank"
               rel="noreferrer"
               aria-label="WhatsApp"
@@ -79,7 +76,7 @@ export default function Footer({ year, donationUrl }: FooterProps) {
         </div>
       </div>
       <div className="border-t border-emerald-900/70 px-4 py-4 text-center text-xs text-emerald-200 sm:px-6">
-        Copyright {year} God&apos;stime Orphanage. All rights reserved.
+        © {year} God&apos;stime Orphanage Home. All rights reserved.
       </div>
     </footer>
   );

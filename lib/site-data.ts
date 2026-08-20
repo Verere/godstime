@@ -1,31 +1,26 @@
 import type { EventItem, GalleryItem, Program, SiteSettings, Testimonial } from "@/types";
 
 export const siteSettings: SiteSettings = {
-  organizationName: "God'stime Orphanage",
+  organizationName: "God'stime Orphanage Home",
   description:
-    "God'stime Orphanage provides care, education, support and opportunities that help children build brighter futures.",
-  phone: "+234 800 000 0000",
-  email: "hello@godstimeorphanage.org",
-  address: "12 Hope Lane, Lagos, Nigeria",
-  donationUrl: "https://example.org/donate",
+    "God'stime Orphanage Home provides care, support, and opportunity for children in vulnerable situations.",
+  phone: "+234 815 425 5357",
+  email: "godstimeorphanagehomedsc@gmail.com",
+  address: "6 Alfred Molade Street, Kotokoto, Ekete, Delta, Nigeria",
+  donationUrl: "/donate",
   socialLinks: {
-    facebook: "https://facebook.com",
-    instagram: "https://instagram.com",
-    x: "https://x.com",
-    youtube: "https://youtube.com",
+    facebook: "",
+    instagram: "",
+    x: "",
+    youtube: "",
   },
   hero: {
-    badge: "Building Brighter Futures",
+    badge: "God'stime Orphanage Home",
     title: "Every Child Deserves a Home, Hope & a Future",
     subtitle:
-      "At Godstime Orphanage Home, we provide love, care, protection, education, and hope for vulnerable children, creating a safe environment where every child can learn, grow, and thrive.",
+      "We provide shelter, daily care, learning support, and emotional guidance for children in vulnerable situations.",
   },
-  impactMetrics: [
-    { label: "Children Supported", value: 20, suffix: "+" },
-    { label: "Years of Service", value: 3, suffix: "+" },
-    { label: "Educational Programs", value: 15, suffix: "+" },
-    { label: "Community Volunteers", value: 5, suffix: "+" },
-  ],
+  impactMetrics: [],
 };
 
 export const programs: Program[] = [
@@ -144,58 +139,9 @@ export const galleryItems: GalleryItem[] = [
 ];
 
 export const events: EventItem[] = [
-  {
-    id: "1",
-    title: "Back-to-School Support Drive",
-    description: "Join us to provide school supplies for children in our care.",
-    date: "2026-09-12",
-    location: "God'stime Community Hall",
-    imageUrl: "https://images.unsplash.com/photo-1522661067900-ab829854a57f?auto=format&fit=crop&w=1400&q=80",
-    isPublished: true,
-  },
-  {
-    id: "2",
-    title: "Community Health Outreach",
-    description: "Free checkups and wellness education in partnership with volunteers.",
-    date: "2026-10-05",
-    location: "Hope Medical Center",
-    imageUrl: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1400&q=80",
-    isPublished: true,
-  },
-  {
-    id: "3",
-    title: "Annual Fundraising Gala",
-    description: "A night dedicated to expanding opportunities for children.",
-    date: "2026-11-20",
-    location: "Emerald Grand Hotel",
-    imageUrl: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1400&q=80",
-    isPublished: true,
-  },
+  // TODO: VERIFY WITH GOD'S TIME ORPHANAGE before publishing upcoming events.
 ];
 
 export const testimonials: Testimonial[] = [
-  {
-    id: "1",
-    quote:
-      "The commitment to each child is genuine. I have seen lives transform through education and care.",
-    name: "Verere A.",
-    role: "Volunteer",
-    isPublished: true,
-  },
-  {
-    id: "2",
-    quote:
-      "Every donation is used meaningfully. Their transparency and impact are inspiring.",
-    name: "David E.",
-    role: "Donor",
-    isPublished: true,
-  },
-  {
-    id: "3",
-    quote:
-      "Our partnership has strengthened community support systems for vulnerable children.",
-    name: "Edesiri Abada Foundation",
-    role: "Community Partner",
-    isPublished: true,
-  },
+  // TODO: VERIFY WITH GOD'S TIME ORPHANAGE before publishing testimonials.
 ];
