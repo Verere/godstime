@@ -1,25 +1,21 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import { siteSettings } from "@/lib/site-data";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Get Involved",
-  description:
-    "Volunteer, sponsor, partner, or donate to support children through God'stime Orphanage Home.",
-  alternates: { canonical: "/get-involved" },
-};
+export const metadata = createPageMetadata({ title: "Get Involved", description: "Explore ways to volunteer, partner, sponsor, or donate to God'stime Orphanage Home in Delta State, Nigeria.", path: "/get-involved" });
 
 export default function GetInvolvedPage() {
   return (
     <div className="min-h-screen bg-[#FFFEF8] text-[#17201A]">
       <Navbar donationUrl={siteSettings.donationUrl} />
-      <main className="px-4 py-10 sm:px-6 sm:py-14">
+      <main id="main-content" className="px-4 py-10 sm:px-6 sm:py-14">
         <div className="mx-auto max-w-6xl space-y-8">
-          <section className="rounded-3xl border border-[#d8eedf] bg-[#f7fdf9] p-6 sm:p-8">
-            <h1 className="text-3xl font-bold sm:text-4xl">How You Can Help</h1>
-            <p className="mt-3 max-w-3xl text-[#2f3d34]">
+          <section className="page-hero">
+            <p className="section-label">Be part of the change</p>
+            <h1 className="display-title mt-2 text-[#17201A]">How You Can Help</h1>
+            <p className="mt-3 max-w-3xl text-lg text-[#2f3d34]">
               Whether you have time, resources, or expertise, there is a meaningful way to support children through God&apos;stime Orphanage Home.
             </p>
           </section>
@@ -71,7 +67,7 @@ export default function GetInvolvedPage() {
           </section>
         </div>
       </main>
-      <Footer year={2026} donationUrl={siteSettings.donationUrl} />
+      <Footer year={new Date().getFullYear()} donationUrl={siteSettings.donationUrl} />
     </div>
   );
 }

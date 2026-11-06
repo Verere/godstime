@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { Clock3, Mail, MapPin, Phone } from "lucide-react";
 import { publicContent } from "@/lib/public-content";
 import Reveal from "@/components/ui/Reveal";
 
@@ -69,29 +70,53 @@ export default function Contact() {
             Reach out to donate, volunteer, sponsor, or discuss partnership opportunities.
           </p>
 
-          <div className="surface-card mt-6 space-y-2 p-5 text-sm text-[#17201A]">
-            <p><span className="font-semibold">Visit Us:</span> {publicContent.contact.address}</p>
-            <p><span className="font-semibold">Call Us:</span> <a href={`tel:${publicContent.contact.phoneRaw}`} className="text-[#18492f] underline underline-offset-2">{publicContent.contact.phone}</a></p>
-            <p><span className="font-semibold">Email Us:</span> <a href={`mailto:${publicContent.contact.email}`} className="text-[#18492f] underline underline-offset-2">{publicContent.contact.email}</a></p>
-            <p><span className="font-semibold">Opening Hours:</span> {publicContent.contact.openingHours}</p>
+          <div className="surface-card mt-6 grid min-w-0 gap-4 p-4 sm:grid-cols-2 sm:gap-5 sm:p-5">
+            <div className="flex min-w-0 gap-3 sm:col-span-2">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#eef6eb] text-[#18492f]"><MapPin aria-hidden="true" className="h-5 w-5" /></span>
+              <div className="min-w-0">
+                <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#607064]">Visit us</p>
+                <p className="mt-1 break-words text-sm font-semibold leading-relaxed text-[#17201A]">{publicContent.contact.address}</p>
+              </div>
+            </div>
+            <div className="flex min-w-0 gap-3">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#eef6eb] text-[#18492f]"><Phone aria-hidden="true" className="h-5 w-5" /></span>
+              <div className="min-w-0">
+                <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#607064]">Call us</p>
+                <a href={`tel:${publicContent.contact.phoneRaw}`} className="mt-1 block break-words text-sm font-semibold text-[#18492f] underline underline-offset-2">{publicContent.contact.phone}</a>
+              </div>
+            </div>
+            <div className="flex min-w-0 gap-3">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#eef6eb] text-[#18492f]"><Mail aria-hidden="true" className="h-5 w-5" /></span>
+              <div className="min-w-0">
+                <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#607064]">Email us</p>
+                <a href={`mailto:${publicContent.contact.email}`} className="mt-1 block break-all text-sm font-semibold text-[#18492f] underline underline-offset-2">{publicContent.contact.email}</a>
+              </div>
+            </div>
+            <div className="flex min-w-0 gap-3 sm:col-span-2">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#fff5df] text-[#775314]"><Clock3 aria-hidden="true" className="h-5 w-5" /></span>
+              <div className="min-w-0">
+                <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#607064]">Opening hours</p>
+                <p className="mt-1 break-words text-sm font-semibold text-[#17201A]">{publicContent.contact.openingHours}</p>
+              </div>
+            </div>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-3">
-            <Link href="/contact" className="btn-base btn-secondary">
-              Contact Page
+          <div className="mt-4 grid gap-3 sm:flex sm:flex-wrap">
+            <Link href="/contact" className="btn-base btn-secondary w-full sm:w-auto">
+              Contact Details
             </Link>
             <a
               href={`https://wa.me/${publicContent.contact.phoneRaw.replace(/\D/g, "")}`}
               target="_blank"
               rel="noreferrer"
-              className="btn-base btn-primary"
+              className="btn-base btn-primary w-full sm:w-auto"
             >
               Message on WhatsApp
             </a>
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="surface-card p-6 sm:p-7" noValidate>
+        <form onSubmit={handleSubmit} className="surface-card min-w-0 p-4 sm:p-6 lg:p-7">
           <input
             tabIndex={-1}
             autoComplete="off"
@@ -112,7 +137,7 @@ export default function Contact() {
                 autoComplete="name"
                 value={form.name}
                 onChange={(event) => setForm((prev) => ({ ...prev, name: event.target.value }))}
-                className="mt-1 w-full rounded-xl border border-[#cfe1d1] px-3 py-2.5 outline-none focus:ring-2 focus:ring-[#1f7a46]"
+                className="field-control mt-1"
               />
             </label>
 
@@ -126,7 +151,7 @@ export default function Contact() {
                 autoComplete="email"
                 value={form.email}
                 onChange={(event) => setForm((prev) => ({ ...prev, email: event.target.value }))}
-                className="mt-1 w-full rounded-xl border border-[#cfe1d1] px-3 py-2.5 outline-none focus:ring-2 focus:ring-[#1f7a46]"
+                className="field-control mt-1"
               />
             </label>
 
@@ -138,7 +163,7 @@ export default function Contact() {
                 autoComplete="tel"
                 value={form.phone}
                 onChange={(event) => setForm((prev) => ({ ...prev, phone: event.target.value }))}
-                className="mt-1 w-full rounded-xl border border-[#cfe1d1] px-3 py-2.5 outline-none focus:ring-2 focus:ring-[#1f7a46]"
+                className="field-control mt-1"
               />
             </label>
 
@@ -149,7 +174,7 @@ export default function Contact() {
                 name="subject"
                 value={form.subject}
                 onChange={(event) => setForm((prev) => ({ ...prev, subject: event.target.value }))}
-                className="mt-1 w-full rounded-xl border border-[#cfe1d1] px-3 py-2.5 outline-none focus:ring-2 focus:ring-[#1f7a46]"
+                className="field-control mt-1"
               />
             </label>
           </div>
@@ -164,20 +189,20 @@ export default function Contact() {
               minLength={10}
               value={form.message}
               onChange={(event) => setForm((prev) => ({ ...prev, message: event.target.value }))}
-              className="mt-1 w-full rounded-xl border border-[#cfe1d1] px-3 py-2.5 outline-none focus:ring-2 focus:ring-[#1f7a46]"
+              className="field-control mt-1 min-h-32 resize-y"
             />
           </label>
 
           <button
             disabled={status === "sending"}
-            className="btn-base btn-primary mt-4 disabled:cursor-not-allowed disabled:opacity-70"
+            className="btn-base btn-primary mt-4 w-full disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
             aria-busy={status === "sending"}
           >
             {status === "sending" ? "Sending..." : "Send Message"}
           </button>
 
           {feedback ? (
-            <p className={`mt-3 text-sm ${status === "success" ? "text-[#166534]" : "text-red-700"}`}>{feedback}</p>
+            <p role="status" aria-live="polite" className={`mt-3 rounded-xl px-4 py-3 text-sm ${status === "success" ? "bg-[#eef6eb] text-[#166534]" : "bg-red-50 text-red-800"}`}>{feedback}</p>
           ) : null}
           <p className="mt-2 text-xs text-[#2f3d34]">
             Messages from this form are sent to our internal contact API for follow-up.

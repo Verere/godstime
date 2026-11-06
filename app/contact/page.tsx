@@ -1,15 +1,11 @@
-import type { Metadata } from "next";
 import Contact from "@/components/home/Contact";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import { publicContent } from "@/lib/public-content";
 import { siteSettings } from "@/lib/site-data";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: "Get in touch with God'stime Orphanage Home for donations, volunteering, and partnerships.",
-  alternates: { canonical: "/contact" },
-};
+export const metadata = createPageMetadata({ title: "Contact Us", description: "Contact God'stime Orphanage Home in Ekete, Delta State about donations, volunteering, visits, and partnerships.", path: "/contact" });
 
 export default function ContactPage() {
   const mapQuery = encodeURIComponent(publicContent.contact.address);
@@ -17,19 +13,20 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[#FFFEF8] text-[#17201A]">
       <Navbar donationUrl={siteSettings.donationUrl} />
-      <main>
+      <main id="main-content">
         <section className="px-4 pb-4 pt-10 sm:px-6 sm:pt-14">
-          <div className="mx-auto max-w-7xl rounded-2xl border border-[#d8eedf] bg-[#f7fdf9] p-6">
-            <h1 className="text-3xl font-bold sm:text-4xl">Contact God&apos;stime Orphanage Home</h1>
-            <p className="mt-2 text-[#2f3d34]">Visit us, call us, email us, or send a message through the form below.</p>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <a href={`tel:${publicContent.contact.phoneRaw}`} className="rounded-full border border-[#86efac] bg-white px-4 py-2 text-sm font-semibold text-[#166534]">Call Us</a>
-              <a href={`mailto:${publicContent.contact.email}`} className="rounded-full border border-[#86efac] bg-white px-4 py-2 text-sm font-semibold text-[#166534]">Email Us</a>
+          <div className="page-hero mx-auto max-w-7xl">
+            <p className="section-label">We&apos;re here to help</p>
+            <h1 className="display-title mt-2 text-[#17201A]">Contact our team</h1>
+            <p className="mt-3 max-w-3xl text-lg text-[#2f3d34]">Visit us, call us, email us, or send a message through the form below.</p>
+            <div className="mt-5 grid gap-3 sm:flex sm:flex-wrap">
+              <a href={`tel:${publicContent.contact.phoneRaw}`} className="btn-base btn-secondary w-full sm:w-auto">Call Us</a>
+              <a href={`mailto:${publicContent.contact.email}`} className="btn-base btn-secondary w-full sm:w-auto">Email Us</a>
               <a
                 href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full bg-[#166534] px-4 py-2 text-sm font-semibold text-white"
+                className="btn-base btn-primary w-full sm:w-auto"
               >
                 Get Directions
               </a>
@@ -38,7 +35,7 @@ export default function ContactPage() {
         </section>
         <Contact />
       </main>
-      <Footer year={2026} donationUrl={siteSettings.donationUrl} />
+      <Footer year={new Date().getFullYear()} donationUrl={siteSettings.donationUrl} />
     </div>
   );
 }

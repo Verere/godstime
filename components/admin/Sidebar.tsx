@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Calendar, GalleryHorizontal, LayoutDashboard, MessageSquare, Settings, Shapes, Quote } from "lucide-react";
 
 const items = [
@@ -12,17 +15,22 @@ const items = [
 ];
 
 export default function Sidebar() {
+  const pathname = usePathname();
   return (
-    <aside className="w-full border-r border-[#dcfce7] bg-white p-4 lg:w-64">
-      <h2 className="mb-4 text-lg font-bold text-[#166534]">Admin Panel</h2>
-      <nav className="grid gap-2">
+    <aside className="w-full border-b border-[#dcfce7] bg-white p-4 lg:min-h-screen lg:w-64 lg:shrink-0 lg:border-b-0 lg:border-r lg:p-5">
+      <Link href="/admin" className="mb-4 flex items-center gap-3 rounded-2xl bg-[#f3f8f1] p-3 lg:mb-7">
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#18492f] text-sm font-extrabold text-white">G</span>
+        <span><span className="block text-sm font-bold text-[#17201A]">Admin workspace</span><span className="block text-xs text-[#5c6d63]">God&apos;stime Orphanage</span></span>
+      </Link>
+      <nav aria-label="Admin navigation" className="flex gap-2 overflow-x-auto pb-1 lg:grid lg:overflow-visible">
         {items.map(({ href, label, icon: Icon }) => (
           <Link
             key={href}
             href={href}
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-[#17201A] hover:bg-[#f0fdf4]"
+            aria-current={pathname === href ? "page" : undefined}
+            className={`flex min-h-11 shrink-0 items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-semibold transition lg:w-full ${pathname === href ? "bg-[#18492f] text-white shadow-sm" : "text-[#34483b] hover:bg-[#f0f7f0] hover:text-[#18492f]"}`}
           >
-            <Icon className="h-4 w-4 text-[#16A34A]" />
+            <Icon className={`h-4 w-4 ${pathname === href ? "text-[#f2d99e]" : "text-[#1f7a46]"}`} />
             <span>{label}</span>
           </Link>
         ))}

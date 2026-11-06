@@ -15,15 +15,23 @@ export default async function AdminSettingsPage() {
     .lean<SettingsView | null>();
 
   return (
-    <main>
-      <h2 className="text-2xl font-bold text-[#17201A]">Site Settings</h2>
-      <p className="mt-1 text-sm text-[#2f3d34]">Update settings via PUT /api/settings.</p>
+    <main id="main-content" className="mx-auto max-w-7xl">
+      <p className="section-label">Configuration</p>
+      <h2 className="editorial-title mt-1 text-[#17201A]">Site settings</h2>
+      <p className="mt-2 text-sm text-[#607064]">Current organization details saved for the website.</p>
 
-      <div className="mt-4 rounded-2xl border border-[#dcfce7] bg-white p-4 text-sm">
-        <p><span className="font-semibold">Organization:</span> {settings?.organizationName ?? "Not set"}</p>
-        <p><span className="font-semibold">Email:</span> {settings?.email ?? "Not set"}</p>
-        <p><span className="font-semibold">Phone:</span> {settings?.phone ?? "Not set"}</p>
-        <p><span className="font-semibold">Donation URL:</span> {settings?.donationUrl ?? "Not set"}</p>
+      <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        {[
+          ["Organization", settings?.organizationName],
+          ["Contact email", settings?.email],
+          ["Phone", settings?.phone],
+          ["Donation link", settings?.donationUrl],
+        ].map(([label, value]) => (
+          <article key={label} className="rounded-2xl border border-[#e0e9dd] bg-white p-5 shadow-sm">
+            <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#718075]">{label}</p>
+            <p className="mt-3 break-words text-sm font-semibold text-[#17201A]">{value || "Not set"}</p>
+          </article>
+        ))}
       </div>
     </main>
   );

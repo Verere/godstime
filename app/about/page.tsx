@@ -1,14 +1,10 @@
-import type { Metadata } from "next";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import { publicContent } from "@/lib/public-content";
 import { siteSettings } from "@/lib/site-data";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: "Learn about God'stime Orphanage Home mission, values, and care approach.",
-  alternates: { canonical: "/about" },
-};
+export const metadata = createPageMetadata({ title: "About Us", description: "Learn about God'stime Orphanage Home's mission, care approach, and community work in Ekete, Delta State, Nigeria.", path: "/about" });
 
 const valueDescriptions: Record<string, string> = {
   Dignity: "Every child deserves respect and the chance to grow with confidence.",
@@ -23,16 +19,17 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[#FFFEF8] text-[#17201A]">
       <Navbar donationUrl={siteSettings.donationUrl} />
-      <main className="px-4 py-10 sm:px-6 sm:py-14">
+      <main id="main-content" className="px-4 py-10 sm:px-6 sm:py-14">
         <div className="mx-auto max-w-6xl space-y-10">
-          <section className="rounded-3xl border border-[#d8eedf] bg-[#f7fdf9] p-6 sm:p-8">
-            <h1 className="text-3xl font-bold sm:text-4xl">About God&apos;stime Orphanage Home</h1>
-            <p className="mt-3 max-w-3xl text-[#2f3d34]">
+          <section className="page-hero">
+            <p className="section-label">Who we are</p>
+            <h1 className="display-title mt-2 max-w-4xl text-[#17201A]">About God&apos;stime Orphanage Home</h1>
+            <p className="mt-4 max-w-3xl text-lg text-[#2f3d34]">
               We exist to care for children in vulnerable situations through safe shelter, daily support, and practical opportunities for growth.
             </p>
           </section>
 
-          <section>
+          <section className="content-section">
             <h2 className="text-2xl font-bold">Our Story</h2>
             <p className="mt-3 text-[#2f3d34]">
               God&apos;stime Orphanage Home was established to respond to the needs of children who require stable care and protection.
@@ -41,7 +38,7 @@ export default function AboutPage() {
             <p className="mt-2 text-xs text-[#5c6d63]">TODO: VERIFY WITH GOD&apos;S TIME ORPHANAGE</p>
           </section>
 
-          <section className="grid gap-6 md:grid-cols-2">
+          <section className="grid gap-5 md:grid-cols-2">
             <article className="rounded-2xl border border-[#dcfce7] bg-white p-6 shadow-sm">
               <h2 className="text-2xl font-bold">Our Mission</h2>
               <p className="mt-2 text-[#2f3d34]">{publicContent.mission}</p>
@@ -52,7 +49,7 @@ export default function AboutPage() {
             </article>
           </section>
 
-          <section>
+          <section className="content-section">
             <h2 className="text-2xl font-bold">Our Values</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {publicContent.values.map((value) => (
@@ -64,7 +61,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <section>
+          <section className="content-section">
             <h2 className="text-2xl font-bold">What We Do</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {publicContent.programAreas.map((program) => (
@@ -76,7 +73,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <section className="grid gap-6 md:grid-cols-2">
+          <section className="grid gap-5 md:grid-cols-2">
             <article className="rounded-2xl border border-[#dcfce7] bg-white p-6 shadow-sm">
               <h2 className="text-2xl font-bold">Who We Serve</h2>
               <p className="mt-2 text-[#2f3d34]">
@@ -91,7 +88,7 @@ export default function AboutPage() {
             </article>
           </section>
 
-          <section>
+          <section className="content-section">
             <h2 className="text-2xl font-bold">Our Future Goals</h2>
             <p className="mt-2 text-[#2f3d34]">
               We aim to strengthen child care quality, expand learning support, and grow responsible community partnerships.
@@ -112,7 +109,7 @@ export default function AboutPage() {
           </section>
         </div>
       </main>
-      <Footer year={2026} donationUrl={siteSettings.donationUrl} />
+      <Footer year={new Date().getFullYear()} donationUrl={siteSettings.donationUrl} />
     </div>
   );
 }

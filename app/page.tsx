@@ -15,16 +15,39 @@ import Navbar from "@/components/layout/Navbar";
 import Reveal from "@/components/ui/Reveal";
 import { publicContent } from "@/lib/public-content";
 import { events, galleryItems, programs, siteSettings } from "@/lib/site-data";
+import { absoluteUrl } from "@/lib/seo";
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: publicContent.organizationName,
+  url: absoluteUrl("/"),
+  logo: absoluteUrl("/logo.jpeg"),
+  email: publicContent.contact.email,
+  telephone: publicContent.contact.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "6 Alfred Molade Street, Kotokoto",
+    addressLocality: "Ekete",
+    addressRegion: "Delta State",
+    addressCountry: "NG",
+  },
+};
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#FFFEF8] text-[#17201A]">
       <Navbar donationUrl={siteSettings.donationUrl} />
-      <main>
+      <main id="main-content">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c") }}
+        />
         <Hero
           badge={siteSettings.hero.badge}
           title={siteSettings.hero.title}
           subtitle={siteSettings.hero.subtitle}
+          donationUrl={siteSettings.donationUrl}
         />
 
         <Reveal className="px-4 py-16 sm:px-6" aria-labelledby="mission-statement-title">
@@ -46,13 +69,13 @@ export default function Home() {
 
         <Reveal className="px-4 py-18 sm:px-6" aria-labelledby="support-matters-title">
           <div className="section-shell grid items-center gap-8 lg:grid-cols-[1.02fr_1fr]">
-            <div className="relative order-2 overflow-hidden rounded-[1.8rem] lg:order-1">
+            <div className="relative order-2 mx-auto h-[320px] w-full max-w-2xl overflow-hidden rounded-[1.8rem] border border-[#e4e9df] bg-[#f4ecdf] shadow-[0_24px_50px_-34px_rgba(23,32,26,0.5)] sm:h-[400px] lg:order-1 lg:h-[470px]">
               <Image
                 src="/mm.png"
                 alt="Community care and support activities"
-                width={1400}
-                height={1000}
-                className="h-[320px] w-full object-cover sm:h-[500px]"
+                fill
+                sizes="(max-width: 1024px) 100vw, 48vw"
+                className="object-cover object-top"
               />
             </div>
 
@@ -93,7 +116,7 @@ export default function Home() {
         <DonationCTA donationUrl={siteSettings.donationUrl} />
         <Contact />
       </main>
-      <Footer year={2026} donationUrl={siteSettings.donationUrl} />
+      <Footer year={new Date().getFullYear()} donationUrl={siteSettings.donationUrl} />
     </div>
   );
 }

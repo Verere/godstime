@@ -136,6 +136,29 @@ export const galleryItems: GalleryItem[] = [
     isPublished: true,
     createdAt: new Date().toISOString(),
   },
+  {
+    id: "7",
+    title: "Health Awareness Workshop",
+    description: "Educational session on maintaining good health.",
+    imageUrl: "/9.jpeg",
+    cloudinaryPublicId: "demo/health-awareness",
+    category: "Events",
+    consentStatus: "approved",
+    isPublished: true,
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: "8",
+    title: "Classroom Learning",
+    description: "Children engaged in focused learning activities.",
+    imageUrl: "/8.jpeg",
+    cloudinaryPublicId: "demo/classroom-learning",
+    category: "Events",
+    consentStatus: "approved",
+    isPublished: true,
+    createdAt: new Date().toISOString(),
+  },
+ 
 ];
 
 export const events: EventItem[] = [

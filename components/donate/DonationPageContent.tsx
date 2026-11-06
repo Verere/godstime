@@ -19,18 +19,18 @@ export default function DonationPageContent() {
   };
 
   return (
-    <main className="px-4 py-10 sm:px-6 sm:py-14">
+    <main id="main-content" className="px-4 py-10 sm:px-6 sm:py-14">
       <div className="mx-auto max-w-6xl space-y-12">
-        <section className="rounded-3xl border border-[#d8eedf] bg-[#f7fdf9] p-6 sm:p-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#166534]">Donate</p>
-          <h1 className="mt-2 text-3xl font-bold text-[#17201A] sm:text-4xl">Support Care, Safety, and Opportunity</h1>
-          <p className="mt-3 max-w-3xl text-[#2f3d34]">
+        <section className="page-hero">
+          <p className="section-label">Your support matters</p>
+          <h1 className="display-title mt-2 max-w-4xl text-[#17201A]">Support care, safety, and opportunity</h1>
+          <p className="mt-4 max-w-3xl text-lg text-[#2f3d34]">
             Donations help sustain daily care, learning support, health support, and practical needs for children in vulnerable situations.
           </p>
         </section>
 
         <section className="grid gap-6 lg:grid-cols-2">
-          <article className="rounded-2xl border border-[#dcfce7] bg-white p-6 shadow-sm">
+          <article className="surface-card p-6 sm:p-7">
             <h2 className="text-2xl font-bold text-[#17201A]">Why your support matters</h2>
             <p className="mt-3 text-sm text-[#2f3d34]">
               Consistent support helps us plan responsibly and provide stable day-to-day care that children can rely on.
@@ -42,7 +42,7 @@ export default function DonationPageContent() {
             </ul>
           </article>
 
-          <article className="rounded-2xl border border-[#dcfce7] bg-white p-6 shadow-sm">
+          <article className="surface-card p-6 sm:p-7">
             <h2 className="text-2xl font-bold text-[#17201A]">How to donate</h2>
             <p className="mt-3 text-sm text-[#2f3d34]">Use the bank transfer details below and share confirmation with our team for acknowledgement.</p>
 
@@ -50,11 +50,11 @@ export default function DonationPageContent() {
               <div className="rounded-xl border border-[#e3f5e7] bg-[#f9fffb] p-4">
                 <p className="text-xs uppercase tracking-wide text-[#4b6658]">Account Number</p>
                 <div className="mt-1 flex flex-wrap items-center gap-2">
-                  <p className="text-lg font-bold text-[#17201A]">{publicContent.donation.accountNumber}</p>
+                  <p className="font-sans text-2xl font-extrabold tracking-[0.08em] text-[#17201A]">{publicContent.donation.accountNumber}</p>
                   <button
                     type="button"
                     onClick={copyAccountNumber}
-                    className="inline-flex items-center gap-1 rounded-full border border-[#bbf7d0] px-3 py-1 text-xs font-semibold text-[#166534] hover:bg-[#ecfdf3]"
+                    className="inline-flex min-h-10 items-center gap-1 rounded-full border border-[#bbf7d0] px-3 py-1 text-xs font-semibold text-[#166534] hover:bg-[#ecfdf3]"
                   >
                     <Copy className="h-3.5 w-3.5" /> Copy Account Number
                   </button>
@@ -74,7 +74,7 @@ export default function DonationPageContent() {
 
             <div className="mt-4 rounded-xl border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">
               <p className="inline-flex items-center gap-2 font-semibold"><ShieldAlert className="h-4 w-4" /> Verify recipient details before transfer</p>
-              <p className="mt-1">{publicContent.donation.notice}</p>
+              <p className="mt-1 leading-relaxed">{publicContent.donation.notice}</p>
             </div>
 
             {copied ? (
@@ -85,7 +85,7 @@ export default function DonationPageContent() {
           </article>
         </section>
 
-        <section className="rounded-2xl border border-[#dcfce7] bg-white p-6 shadow-sm">
+        <section className="surface-card p-6 sm:p-7">
           <h2 className="text-2xl font-bold text-[#17201A]">Donation confirmation</h2>
           <p className="mt-3 text-sm text-[#2f3d34]">
             After transfer, send your confirmation by email or WhatsApp so we can acknowledge receipt.
@@ -105,7 +105,7 @@ export default function DonationPageContent() {
           </div>
         </section>
 
-        <section className="rounded-2xl border border-[#dcfce7] bg-[#f0fdf4] p-6 shadow-sm">
+        <section className="rounded-2xl border border-[#bbf7d0] bg-[#f0fdf4] p-6 sm:p-7">
           <h2 className="text-xl font-bold text-[#17201A]">Need help with your donation?</h2>
           <p className="mt-2 text-sm text-[#2f3d34]">Our team can guide you through transfer confirmation and provide support information.</p>
           <div className="mt-3 space-y-1 text-sm text-[#17201A]">

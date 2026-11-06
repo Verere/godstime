@@ -82,6 +82,7 @@ export default function Gallery({ items, previewCount, showViewAllLink = false }
               <button
                 key={category}
                 type="button"
+                aria-pressed={activeCategory === category}
                 onClick={() => {
                   setActiveCategory(category);
                   setActiveIndex(null);
@@ -98,18 +99,12 @@ export default function Gallery({ items, previewCount, showViewAllLink = false }
           </div>
         ) : null}
 
-        <div className="mt-8 grid auto-rows-[140px] grid-cols-2 gap-3 sm:auto-rows-[170px] sm:grid-cols-6 lg:auto-rows-[200px]">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
           {filtered.map((item, index) => (
             <button
               key={item.id}
               type="button"
-              className={`group relative block w-full overflow-hidden rounded-2xl bg-[#d9efe1] transition duration-300 ${
-                index % 6 === 0
-                  ? "col-span-2 row-span-2 sm:col-span-3"
-                  : index % 6 === 3
-                    ? "col-span-2 row-span-1 sm:col-span-3"
-                    : "col-span-1 row-span-1 sm:col-span-3 lg:col-span-2"
-              }`}
+              className="group relative block aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#e5eee3] shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-md"
               onClick={() => setActiveIndex(index)}
               aria-label={`Open gallery image: ${item.title}`}
             >
@@ -121,9 +116,9 @@ export default function Gallery({ items, previewCount, showViewAllLink = false }
                 <Image
                   src={item.imageUrl}
                   alt={item.description ? `${item.title}. ${item.description}` : item.title}
-                  width={1200}
-                  height={900}
-                  className="h-full w-full rounded-2xl object-cover transition duration-500 group-hover:scale-[1.04]"
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
                   onError={() => setBrokenImageIds((prev) => (prev.includes(item.id) ? prev : [...prev, item.id]))}
                 />
               )}
@@ -148,24 +143,26 @@ export default function Gallery({ items, previewCount, showViewAllLink = false }
       </div>
 
       {active ? (
-        <div className="page-transition fixed inset-0 z-[70] flex items-center justify-center bg-black/80 p-4" role="dialog" aria-modal="true" aria-label="Gallery image modal">
-          <div className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-white shadow-[0_30px_70px_-35px_rgba(0,0,0,0.65)]">
-            <Image
-              src={active.imageUrl}
-              alt={active.description ? `${active.title}. ${active.description}` : active.title}
-              width={1600}
-              height={1000}
-              className="hero-image-reveal h-[320px] w-full object-cover sm:h-[560px]"
-            />
+        <div className="page-transition fixed inset-0 z-[70] flex items-center justify-center bg-black/80 p-4" role="dialog" aria-modal="true" aria-labelledby="gallery-dialog-title" onMouseDown={(event) => { if (event.target === event.currentTarget) setActiveIndex(null); }}>
+          <div className="relative max-h-[calc(100dvh-2rem)] w-full max-w-4xl overflow-y-auto rounded-2xl bg-white shadow-[0_30px_70px_-35px_rgba(0,0,0,0.65)]">
+            <div className="relative h-[min(65dvh,560px)] w-full bg-[#17201A]">
+              <Image
+                src={active.imageUrl}
+                alt={active.description ? `${active.title}. ${active.description}` : active.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 896px"
+                className="object-contain"
+              />
+            </div>
             <div className="p-4">
-              <h3 className="font-semibold text-[#17201A]">{active.title}</h3>
+              <h3 id="gallery-dialog-title" className="font-semibold text-[#17201A]">{active.title}</h3>
               {active.description ? <p className="mt-1 text-sm text-[#2f3d34]">{active.description}</p> : null}
             </div>
             <button
               type="button"
               onClick={() => setActiveIndex(null)}
               ref={closeButtonRef}
-              className="absolute right-3 top-3 rounded-full bg-white/90 p-2 text-[#17201A] transition hover:scale-105"
+              className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-[#17201A] shadow-md transition hover:scale-105"
               aria-label="Close image modal"
             >
               <X className="h-4 w-4" />
@@ -173,7 +170,7 @@ export default function Gallery({ items, previewCount, showViewAllLink = false }
             <button
               type="button"
               onClick={() => setActiveIndex((prev) => (prev === null ? 0 : (prev - 1 + filtered.length) % filtered.length))}
-              className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 text-[#17201A] transition hover:scale-105"
+              className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-[#17201A] shadow-md transition hover:scale-105"
               aria-label="Previous image"
             >
               <ChevronLeft className="h-5 w-5" />
@@ -181,7 +178,7 @@ export default function Gallery({ items, previewCount, showViewAllLink = false }
             <button
               type="button"
               onClick={() => setActiveIndex((prev) => (prev === null ? 0 : (prev + 1) % filtered.length))}
-              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 text-[#17201A] transition hover:scale-105"
+              className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-[#17201A] shadow-md transition hover:scale-105"
               aria-label="Next image"
             >
               <ChevronRight className="h-5 w-5" />

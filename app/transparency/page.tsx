@@ -1,30 +1,26 @@
-import type { Metadata } from "next";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import { publicContent } from "@/lib/public-content";
 import { siteSettings } from "@/lib/site-data";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Trust & Transparency",
-  description:
-    "Trust and transparency details for God'stime Orphanage Home, including contact and verification placeholders.",
-  alternates: { canonical: "/transparency" },
-};
+export const metadata = createPageMetadata({ title: "Trust and Transparency", description: "Find contact and donation information for God'stime Orphanage Home in Ekete, Delta State.", path: "/transparency", noIndex: true });
 
 export default function TransparencyPage() {
   return (
     <div className="min-h-screen bg-[#FFFEF8] text-[#17201A]">
       <Navbar donationUrl={siteSettings.donationUrl} />
-      <main className="px-4 py-10 sm:px-6 sm:py-14">
+      <main id="main-content" className="px-4 py-10 sm:px-6 sm:py-14">
         <div className="mx-auto max-w-6xl space-y-8">
-          <section className="rounded-3xl border border-[#d8eedf] bg-[#f7fdf9] p-6 sm:p-8">
-            <h1 className="text-3xl font-bold sm:text-4xl">Trust & Transparency</h1>
-            <p className="mt-3 max-w-3xl text-[#2f3d34]">
+          <section className="page-hero">
+            <p className="section-label">Open and accountable</p>
+            <h1 className="display-title mt-2 text-[#17201A]">Trust &amp; Transparency</h1>
+            <p className="mt-3 max-w-3xl text-lg text-[#2f3d34]">
               We are committed to clear communication so supporters can verify who we are and how to engage responsibly.
             </p>
           </section>
 
-          <section className="grid gap-4 sm:grid-cols-2">
+          <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <article className="rounded-2xl border border-[#dcfce7] bg-white p-5 shadow-sm">
               <h2 className="text-lg font-semibold">Legal Organization Name</h2>
               <p className="mt-2 text-sm text-[#2f3d34]">{publicContent.transparency.legalName}</p>
@@ -63,7 +59,7 @@ export default function TransparencyPage() {
           </section>
         </div>
       </main>
-      <Footer year={2026} donationUrl={siteSettings.donationUrl} />
+      <Footer year={new Date().getFullYear()} donationUrl={siteSettings.donationUrl} />
     </div>
   );
 }
