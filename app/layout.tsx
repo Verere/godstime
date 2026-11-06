@@ -62,7 +62,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       data-scroll-behavior="smooth"
       className={`${manrope.variable} ${playfairDisplay.variable} h-full scroll-smooth antialiased`}
-    >
+   
+   >
+     <head>    
+        <link rel='icon' href='/logo.svg'/>
+        
+      </head>
       <body className="min-h-full flex flex-col">
         <a href="#main-content" className="sr-only fixed left-4 top-4 z-[100] rounded-lg bg-white px-4 py-3 font-bold text-[#18492f] shadow-lg focus:not-sr-only">
           Skip to main content
