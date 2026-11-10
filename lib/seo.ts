@@ -16,7 +16,9 @@ const normalizedConfiguredUrl = configuredUrl
  * Set NEXT_PUBLIC_SITE_URL to the canonical production origin (for example,
  * https://www.example.org). Vercel host variables are fallbacks for previews.
  */
-export const siteUrl = new URL(normalizedConfiguredUrl ?? "http://localhost:3000").origin;
+export const siteUrl = new URL(
+  normalizedConfiguredUrl ?? "https://www.godstimeorphanage.com",
+).origin;
 
 export function absoluteUrl(path: string) {
   return new URL(path, `${siteUrl}/`).toString();
